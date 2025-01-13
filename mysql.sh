@@ -5,9 +5,9 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 LOGS_FOLDER="/Var/logs/expense-logs"
-LOG_FILE=$(echo $0 | cut -d "." -f1 )
+LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%y-%m-%y-%H-%S)
-LOG_FILE_NAME="$LOGS_FOLDER/$LOGS_FILE-$TIMESTAMP.log"
+LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 VALIDATE(){
      if [ $1 -ne 0 ] 
@@ -27,11 +27,11 @@ CHECK_ROOT(){
     fi
 }
 
-echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+echo "script started executing at: $TIMESTAMP" >>$LOG_FILE_NAME
 
 CHECK_ROOT
 
-dnf install mysql-server -y &>>$LOG_FILE_NAME
+dnf install mysql-server -y >>$LOG_FILE_NAME
 VALIDATE $? "Installing MYSQL server"
 
 systemctl enable mysqld &>>$LOG_FILE_NAME
