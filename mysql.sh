@@ -7,16 +7,16 @@ Y="\e[33m"
 LOGS_FOLDER="/Var/logs/expense-logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%y-%m-%y-%H-%S)
-LOG_FILE_NAME="$LOGS_FOLDER/$LOGS_FILE-$TIMESTAMP.log"
+LOG_FILE_NAME="$LOGS_FOLDER/$LOGS_FILE/$TIMESTAMP.log"
 
 VALIDATE(){
      if [ $1 -ne 0 ] 
      then
          echo -e "$2...$R FAILURE $N"
          exit 1
-    else
+     else
         echo  -e " $2...$G SUCESS $N"
-    fi
+     fi
 }
 
 CHECK_ROOT(){
