@@ -22,9 +22,9 @@ VALIDATE(){
 CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
-        echo "ERROR:: You must have sudo access to execute the script"
+         echo "ERROR:: You must have sudo access to execute the script"
         exit 1 #other than 0
-     fi
+    fi
 }
 
 echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
@@ -38,7 +38,7 @@ systemctl enable mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling MYSQL server"
 
 systemctl start mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "Startig MYSQL server"
+VALIDATE $? "Starting MYSQL server"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
 VALIDATE $? "Setting Root Password"
